@@ -15,12 +15,15 @@
 
 // rules
 
+.not-scroll
+  overflow hidden
+
 body
   background #fefefe
   font-size 14px
   background #fefefe
   color #333
-
+  overflow-x hidden
 *
   box-sizing border-box
 
@@ -49,6 +52,9 @@ h6
   font-weight 600
   margin 0
 
+.title
+  font-weight 700
+
 p
   font-size 16px
   line-height 1.4em
@@ -64,6 +70,7 @@ textarea
   resize vertical
 
 figure
+  margin 0
   overflow hidden
   img
     display block
@@ -88,15 +95,18 @@ select
   color #666
 
 .btn
+  outline none
+  background transparent
   display inline-block
-  padding .8em
-  background red
   text-decoration none
   color white
   font-weight 700
   margin .3em 0
   transition all .2s ease-in
-  &:hover
-    background rgba(red, .9)
+  border none
+  &-dark
+    background red
+    &:hover
+      background rgba(red, .9)
   &:active
     transform scale(0.8)
