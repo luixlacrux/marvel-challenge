@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marvel Challenge</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta name="description" content="Marvel app for finding charaters." />
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <!-- Main -->
+  <main id="app" role="application" class="Main">
+    <!-- Header -->
+    <header class="Header">
+      <figure class="Header-logo">
+        <img src="assets/images/marvel-logo.png" alt="Marvel logo" />
+      </figure>
+      <form class="Header-search" action="#!">
+        <input type="text" placeholder="Search character...">
+        <button>
+          <img src="assets/images/search.png" alt="icon search" />
+        </button>
+      </form>
+    </header>
+    <!-- end header -->
+
+    <!-- Main content -->
+    <div class="Main-content">
+      <!-- Characters -->
+      <section class="Characters">
+        <div class="Characters-info">
+          <h2 class="title">Characters</h2>
+          <select name="sort">
+            <option disabled selected> Sort by</option>
+            <option value="name">Name</option>
+            <option value="other">Some thing</option>
+          </select>
+        </div>
+        <div class="Characters-container">
+          <article class="Card">
+            <div class="Card-header">
+              <figure class="thumbail">
+                <img src="assets/images/ironman.png" alt="iron man" />
+              </figure>
+              <div class="info">
+                <h2 class="title">
+                  <a href="#">Iron man</a>
+                </h2>
+                <p class="description">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Aliquid ipsum reiciendis nulla perferendis. Debitis repellendus,
+                  possimus nulla vero voluptatibus corporis, deleniti consequatur
+                  praesentium voluptate quae sed, sunt sequi nesciunt aut!
+                </p>
+                <a href="#" class="btn btn-dark">View more</a>
+              </div>
+            </div>
+            <h3 class="subtitle"></h3>
+            <ul class="Card-content">
+              <li>Spider-man/Deadpool</li>
+              <li>Praesentium voluptate</li>
+              <li>Iron man</li>
+            </ul>
+          </article>
+        </div>
+        <nav class="Characters-paginator">
+          <ul class="list">
+            <li class="item btn">
+              <a href=""><</a>
+            </li>
+            <li class="item">
+              <a href="#">1</a>
+            </li>
+            <li class="item">
+              <a href="#">2</a>
+            </li>
+          </li>
+            <li class="item">
+              <a href="#">3</a>
+            </li>
+            <li class="item btn">
+              <a href="">></a>
+          </ul>
+        </nav>
+      </section>
+      <!-- Characters -->
+
+      <!-- Favourites -->
+      <div class="Favourites">
+        <h2 class="title">My Favourites</h2>
+        <ul class="Favourites-list">
+          <li class="item">
+            <button class="close">
+              <img src="assets/images/trash.png" alt="trash icon">
+            </button>
+            <figure class="thumbail">
+              <img src="assets/images/spider-man.png" alt="spider man" />
+            </figure>
+            <h4 class="slug">
+              Comic title marius mon tempor quam, et lacina.
+            </h4>
+          </li>
+          <li class="item">
+            <button class="close">
+              <img src="assets/images/trash.png" alt="trash icon">
+            </button>
+            <figure class="thumbail">
+              <img src="assets/images/spider-man.png" alt="spider man" />
+            </figure>
+            <h4 class="slug">
+              Comic title marius mon tempor quam, et lacina.
+            </h4>
+          </li>
+        </ul>
+      </div>
+      <!-- end Favourites -->
+    </div>
+    <!-- end Main content -->
+  </main>
+  <!-- end Main -->
+
+  <!-- Modal -->
+  <div class="Modal">
+    <button class="Modal-button btn btn-close">
+      <img src="assets/images/close.png" alt="close icon" />
+    </button>
+    <div class="Modal-info">
+      <figure class="thumbail">
+        <img src="assets/images/avengers.png" alt="Avengers cover" />
+      </figure>
+      <div class="extract">
+        <h2 class="title">
+          <a href="#">Iron man</a>
+        </h2>
+        <p class="description">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Aliquid ipsum reiciendis nulla perferendis. Debitis repellendus,
+          possimus nulla vero voluptatibus corporis, deleniti consequatur
+          praesentium voluptate quae sed, sunt sequi nesciunt aut!
+        </p>
+      </div>
+    </div>
+    <div class="Modal-actions">
+      <a href="#" class="btn add">ADD TO FAVOURITES</a>
+      <a href="#" class="btn buy">BUY FOR $3.99</a>
+    </div>
+  </div>
+  <!-- end Modal -->
+
+  <!-- Opacity -->
+  <div id="opacity" class="opacity"></div>
+
+  <!-- Footer -->
+  <footer class="Footer">
+    <p class="copy">Grabilty 2017 - Todos los derechos reservados</p>
+    <figure class="logo">
+      <img src="assets/images/grability-logo.png" alt="Grability, SAS">
+    </figure>
+  </footer>
+  <!-- end Footer -->
+
+  <script src="js/bundle.js"></script>
+</body>
+</html>

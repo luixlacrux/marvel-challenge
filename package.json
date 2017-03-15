@@ -1,0 +1,24 @@
+{
+  "name": "marvelapp",
+  "version": "1.0.0",
+  "description": "Marvel challenge",
+  "main": "index.js",
+  "scripts": {
+    "stylus": "stylus -u nib -c source/styles/app.styl -o public/css",
+    "stylus:watch": "stylus -u nib -c -w source/styles/app.styl -o public/css",
+    "build": "browserify source/react/app.js > public/js/bundle.js",
+    "build:watch": "watchify source/react/app.js -o public/js/bundle.js -v",
+    "cp-files": "cp source/*.html public && cp -r source/assets/ public",
+    "public": "mkdir -p public public/css public/js && npm run stylus && npm run build && npm run cp-files",
+    "server": "browser-sync start --config bs-config.js",
+    "start": "npm run public && npm run server"
+  },
+  "author": "Luis Lacruz <luixlacrux18@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "nib": "^1.1.2",
+    "normalize": "^0.3.1",
+    "stylus": "^0.54.5"
+  }
+}
