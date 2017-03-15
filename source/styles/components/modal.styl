@@ -1,2 +1,85 @@
 .Modal
   display none
+  // display flex
+  position absolute
+  top 0
+  left 0
+  width 100%
+  height 100%
+  justify-content center
+  align-items center
+  .title
+    margin .3em 0
+    text-transform uppercase
+
+  &-content
+    box-shadow 0 1px 15px rgba(black, .5)
+    padding 1em
+    z-index 3
+    background white
+    margin 1em
+    max-width 600px
+    text-align right
+
+  &-button
+    display inline-block
+    padding 0
+    margin 0
+
+  &-info
+    position relative
+    display flex
+    flex-direction column
+    text-align left
+    margin 0 -1em 2em -1em
+    .extract
+      height 250px
+      padding 1em
+      color white
+      z-index 2
+      text-shadow 0 1px 3px #ccc
+      p
+        color white
+    .thumbail
+      position absolute
+      top 0
+      left 0
+      right 0
+      height 100%
+      z-index 0
+      img
+        width 100%
+        filter blur(1px) grayscale(.2) brightness(.4)
+
+  &-actions
+    display flex
+    text-align center
+    flex-direction column-reverse
+    color red
+    margin -1em
+    a
+      background #f2f2f2
+      align-items center
+      display flex
+      justify-content center
+      padding .8em
+      font-weight 700
+      color #333
+      &:before
+        content ''
+        width 30px
+        height 30px
+        background-size cover
+        display inline-block
+        background-image url('../assets/icons/btn-favourites-default.png')
+        margin-right .3em
+      &.buy
+        background #ddd
+        color red
+        &:before
+          background-image url('../assets/icons/shopping-cart-primary.png')
+      &.added
+        color red
+        background #333
+        &:before
+          background-image url('../assets/icons/btn-favourites-primary.png')

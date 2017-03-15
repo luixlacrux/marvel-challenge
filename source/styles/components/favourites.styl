@@ -1,14 +1,14 @@
 .Favourites
   position absolute
-  top 70px
   right 0
-  height calc(100vh - 70px)
+  top 0
+  height 100vh
   overflow auto
   transform translateX(100%)
   background white
   transition transform .4s linear
   box-shadow 0 1px 2px rgba(black, .4)
-  z-index 2
+  z-index 3
   &.active
     transform translateX(0%)
   .title
@@ -26,7 +26,7 @@
         margin-right .2em
   &-list
     margin 0
-    padding 1em 1.5em
+    padding 1em 2em
     list-style none
     .item
       position relative
