@@ -1,0 +1,50 @@
+.Card
+  border 1px #ccc solid
+  padding 0 1em
+  &-header
+    .info
+      .title
+        margin .5em 0
+        font-weight 700
+        text-transform uppercase
+      .title > a
+        transition color .4s ease-out
+        &:hover
+          color red
+    .thumbail
+      margin 0 -1em
+
+      height 150px
+      img
+        position relative
+        top -50%
+        width 100%
+  &-content
+    column-count 1
+    margin 0
+    padding 0
+    li
+      padding .3em 0
+      display flex
+      line-height 20px
+      align-items center
+      &:hover
+        a
+          color red
+        &:before
+          display inline-block
+      &:before
+        content ''
+        display none
+        background-image url('../assets/icons/link-arrow.png')
+        background-size cover
+        background-repeat no-repeat
+        height 20px
+        width 20px
+        margin-right .3em
+
+  .subtitle
+    margin .5em 0
+  a:not(.btn)
+    text-decoration none
+    color #333
