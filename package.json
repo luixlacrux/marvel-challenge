@@ -18,7 +18,7 @@
   "devDependencies": {
     "browser-sync": "^2.18.8",
     "nib": "^1.1.2",
-    "normalize": "^0.3.1",
+    "normalize.styl": "^3.0.3",
     "stylus": "^0.54.5"
   }
 }
