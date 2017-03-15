@@ -1,0 +1,35 @@
+@import 'nib'
+@import 'normalize.styl'
+
+
+// Components
+
+@import './components/header'
+
+
+// rules
+
+body
+  background #fefefe
+  font-size 14px
+
+*
+  box-sizing border-box
+
+figure
+  overflow hidden
+  img
+    display block
+
+.wrapper
+  max-width 1200px
+  margin-left auto
+  margin-right auto
+
+input
+  border-radius .2em
+  border 1px transparent solid
+  outline none
+  transition .3s ease-out
+  &:focus
+    border-color gray
