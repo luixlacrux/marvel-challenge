@@ -1,0 +1,23 @@
+@media (min-width 1280px)
+  .Header
+    &-content
+      > button
+        display none
+    &-search
+      margin-right calc(280px - 1em)
+
+  .Main-content
+    max-width 1280px
+    display flex
+    justify-content center
+    margin 0 auto
+  .Favourites
+    z-index inherit
+    height auto
+    position static
+    transform translateX(0%)
+    box-shadow none
+    background $gris_claro
+
+    .title
+      margin-top .8em
