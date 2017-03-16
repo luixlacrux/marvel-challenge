@@ -1,0 +1,23 @@
+@media (min-width 620px)
+  .Card
+    margin-left 2em
+    &-header
+      align-items flex-start
+      flex-direction row
+      position relative
+      top -2.5em
+      left -2.5em
+      .thumbail
+        top 0
+      .info
+        flex 1
+        padding-left 1em
+
+    &-content
+      display flex
+      flex-wrap wrap
+      align-items flex-start
+      li
+        flex-basis 50%
+        &:nth-child(odd)
+          padding-right 1em
