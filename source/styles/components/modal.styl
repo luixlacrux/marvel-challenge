@@ -16,7 +16,7 @@
     box-shadow 0 1px 15px rgba(black, .5)
     padding 1em
     z-index 3
-    background white
+    background $blanco
     margin 1em
     max-width 600px
     text-align right
@@ -35,11 +35,11 @@
     .extract
       height 250px
       padding 1em
-      color white
+      color $blanco
       z-index 2
       text-shadow 0 1px 3px #ccc
       p
-        color white
+        color $blanco
     .thumbail
       position absolute
       top 0
@@ -58,7 +58,7 @@
     color red
     margin -1em
     a
-      background #f2f2f2
+      background $gris_mas_claro
       align-items center
       display flex
       justify-content center
@@ -74,12 +74,12 @@
         background-image url('../assets/icons/btn-favourites-default.png')
         margin-right .3em
       &.buy
-        background #ddd
-        color red
+        background $gris_claro
+        color $rojo
         &:before
           background-image url('../assets/icons/shopping-cart-primary.png')
       &.added
-        color red
-        background #333
+        color $rojo
+        background $negro
         &:before
           background-image url('../assets/icons/btn-favourites-primary.png')
