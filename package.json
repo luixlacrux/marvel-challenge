@@ -6,8 +6,8 @@
   "scripts": {
     "stylus": "stylus -u nib -c source/styles/app.styl -o public/css",
     "stylus:watch": "stylus -u nib -c -w source/styles/app.styl -o public/css",
-    "build": "browserify source/react/app.js > public/js/bundle.js",
-    "build:watch": "watchify source/react/app.js -o public/js/bundle.js -v",
+    "build": "browserify -t babelify source/react/app.js > public/js/bundle.js",
+    "build:watch": "watchify -t babelify source/react/app.js -o public/js/bundle.js -v --debug",
     "cp-files": "cp source/*.html public && cp -r source/assets/ public",
     "public": "mkdir -p public public/css public/js && npm run stylus && npm run build && npm run cp-files",
     "server": "browser-sync start --config bs-config.js",
