@@ -1,6 +1,8 @@
 @import 'nib'
 @import 'normalize.styl'
 
+// Rules
+@import './colors.styl'
 
 // Components
 
@@ -17,10 +19,9 @@
 
 
 body
-  background #fefefe
+  background $gris_mas_claro
   font-size 14px
-  background #fefefe
-  color #333
+  color $negro
   overflow-x hidden
 *
   box-sizing border-box
@@ -119,8 +120,8 @@ select
   transition all .2s ease-in
   border none
   &-dark
-    background red
+    background $rojo
     &:hover
-      background rgba(red, .9)
+      background rgba($rojo , .9)
   &:active
     transform scale(0.8)

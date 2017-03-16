@@ -1,10 +1,26 @@
 .Card
-  border 1px #ccc solid
+  background $blanco
   padding 0 1em
+  margin 3em 0
   &-header
-    .btn
-      padding .8em
+    display flex
+    justify-content center
+    align-items center
+    flex-direction column
+    .thumbail
+      border-radius 50%
+      width 200px
+      height 200px
+      margin 0
+      padding 0
+      box-shadow 5px 5px 10px rgba($negro, .2)
+      position relative
+      top -1.5em
+      img
+        width 100%
     .info
+      .btn
+        padding .8em
       .title
         margin .5em 0
         font-weight 700
@@ -12,15 +28,8 @@
       .title > a
         transition color .4s ease-out
         &:hover
-          color red
-    .thumbail
-      margin 0 -1em
+          color $rojo
 
-      height 150px
-      img
-        position relative
-        top -50%
-        width 100%
   &-content
     column-count 1
     margin 0
@@ -32,7 +41,7 @@
       align-items center
       &:hover
         a
-          color red
+          color $rojo
         &:before
           display inline-block
       &:before
@@ -49,4 +58,4 @@
     margin .5em 0
   a:not(.btn)
     text-decoration none
-    color #333
+    color $negro
