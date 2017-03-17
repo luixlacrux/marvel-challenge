@@ -35,7 +35,7 @@ class Home extends Component {
 
     return (
       <section className="Main-container">
-        <Header />
+        <Header {...this.props}/>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path="/" component={Characters}/>
         </Switch>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import qs from 'querystring'
 
 import CharactersList from './containers/list'
 import Favourites from '../favourites'
@@ -14,18 +15,41 @@ class Characters extends Component {
     }
   }
 
-  componentDidMount () {
-    this.initialFetch()
+  search (props) {
+    const search = qs.decode(props.location.search.replace('?', ''))
+
+    if (search) {
+      return this.initialFetch({
+        nameStartsWith: search.s,
+        limit: 10
+      })
+    }
   }
 
-  async initialFetch () {
+  searchOrInitialFetch (props) {
+    if (props.location.search !== '') {
+      return this.search(props)
+    }
+
+    const querys = { limit: 10 }
+    this.initialFetch(querys)
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.searchOrInitialFetch(nextProps)
+  }
+
+  componentDidMount () {
+    this.searchOrInitialFetch(this.props)
+  }
+
+  async initialFetch (querys) {
     try {
-      const { data } = await api.characters.getList()
+      const { data } = await api.characters.getList(querys)
       this.setState({
         data,
         loading: false
       })
-      console.log(this.state);
     } catch (e) {
       this.setState({
         loading: false,
@@ -49,6 +73,9 @@ class Characters extends Component {
       <div className="Main-content">
         { characters.length > 0 && (
           <CharactersList characters={characters}/>
+        )}
+        { characters.length == 0 && (
+          <h1>No results</h1>
         )}
         {this.state.error && (
           <h1 className="title">Error</h1>
