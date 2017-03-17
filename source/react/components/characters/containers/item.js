@@ -4,6 +4,8 @@ import TextTruncate from 'react-text-truncate'
 
 
 function CharacterItem (props) {
+  const comics = props.comics.items.slice(0, 6)
+
   return (
     <article className="Card">
       <div className="Card-header">
@@ -26,9 +28,16 @@ function CharacterItem (props) {
       </div>
       <h4 className="subtitle">Related comics</h4>
       <ul className="Card-content">
-        <li><a href="#">Spider-man/Deadpool Matrix Iron man, Avengers</a></li>
-        <li><a href="#">Praesentium voluptate</a></li>
-        <li><a href="#">Iron man</a></li>
+        {
+          comics.map(comic => {
+            const id = comic.resourceURI.split('/').pop()
+            return (
+              <li>
+                <Link to={`/comic/${id}`}>{comic.name}</Link>
+              </li>
+            )
+          })
+        }
       </ul>
     </article>
   )
