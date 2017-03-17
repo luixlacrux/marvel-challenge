@@ -4,7 +4,7 @@ import TextTruncate from 'react-text-truncate'
 
 
 function CharacterItem (props) {
-  const comics = props.comics.items.slice(0, 6)
+  const comics = props.comics.items.slice(0, 4)
 
   return (
     <article className="Card">
@@ -32,8 +32,15 @@ function CharacterItem (props) {
           comics.map(comic => {
             const id = comic.resourceURI.split('/').pop()
             return (
-              <li>
-                <Link to={`/comic/${id}`}>{comic.name}</Link>
+              <li key={id}>
+                <Link
+                  to={{
+                    pathname: `/comic/${id}`,
+                    state: { modal: true }
+                  }}
+                >
+                  {comic.name}
+                </Link>
               </li>
             )
           })
