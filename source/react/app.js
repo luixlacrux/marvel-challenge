@@ -1,19 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Pages from './pages'
 
-import Header from './shares/header'
-
-function Main () {
-  return (
-    <section className="Main-container">
-      <Header />
-      <Pages />
-    </section>
-  )
-}
+import App from './routes/pages'
 
 render(
-  <Main />,
+  <App />,
   document.getElementById('app')
 )

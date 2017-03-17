@@ -1,13 +1,13 @@
 .Modal
-  display none
-  // display flex
-  position absolute
+  position fixed
   top 0
   left 0
   width 100%
-  height 100%
+  height 100vh
   justify-content center
   align-items center
+  &.active
+    display flex
   .title
     margin .3em 0
     text-transform uppercase
