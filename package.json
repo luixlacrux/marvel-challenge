@@ -6,11 +6,13 @@
   "scripts": {
     "stylus": "stylus -u nib -c source/styles/app.styl -o public/css",
     "stylus:watch": "stylus -u nib -c -w source/styles/app.styl -o public/css",
-    "build": "browserify -t babelify source/react/app.js > public/js/bundle.js",
+    "build": "browserify -t babelify -g uglifyify source/react/app.js > public/js/bundle.js",
     "build:watch": "watchify -t babelify source/react/app.js -o public/js/bundle.js -v --debug",
     "cp-files": "cp source/*.html public && cp -r source/assets/ public",
     "public": "mkdir -p public public/css public/js && npm run stylus && npm run build && npm run cp-files",
     "server": "browser-sync start --config bs-config.js",
+    "predeploy": "npm run public",
+    "deploy": "firebase deploy",
     "start": "npm run public && npm run server"
   },
   "author": "Luis Lacruz <luixlacrux18@gmail.com>",
@@ -28,6 +30,7 @@
     "nib": "^1.1.2",
     "normalize.styl": "^3.0.3",
     "stylus": "^0.54.5",
+    "uglifyify": "^3.0.4",
     "watchify": "^3.9.0"
   },
   "dependencies": {
