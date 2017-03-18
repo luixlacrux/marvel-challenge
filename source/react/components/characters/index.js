@@ -4,6 +4,8 @@ import qs from 'querystring'
 import CharactersList from './containers/list'
 import Favourites from '../favourites'
 
+import Loading from '../../shares/loading'
+
 import api from '../../utils/api'
 
 class Characters extends Component {
@@ -64,7 +66,7 @@ class Characters extends Component {
     if (this.state.loading) {
       return (
         <div className="Main-content">
-          <h1 className="title">Loading...</h1>
+          <Loading />
         </div>
       )
     }

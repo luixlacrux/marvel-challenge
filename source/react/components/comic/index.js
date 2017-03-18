@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Loading from '../../shares/loading'
+
 import api from '../../utils/api'
 
 class Comic extends Component {
@@ -47,15 +49,16 @@ class Comic extends Component {
       return (
         <div id="opacity" className="opacity active">
           <div className="Modal active">
-            <h1>Loading...</h1>
+            <Loading />
           </div>
         </div>
       )
     }
 
     const { comic } = this.state
-    const thumbnail = comic.images[0]
-    const price = comic.prices[0]
+    const thumbnail = comic.images.length > 0 ? comic.images[0] : null
+    const price = comic.prices.length > 0 ? comic.prices[0] : null
+    const imageNotFound = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
 
     return (
       <div id="opacity" className="opacity active">
@@ -66,9 +69,16 @@ class Comic extends Component {
             </button>
             <div className="Modal-info">
               <figure className="thumbail">
-                <img
-                  src={`${thumbnail.path}.${thumbnail.extension}`}
-                  alt={comic.title}/>
+                {thumbnail && (
+                  <img
+                    src={`${thumbnail.path}.${thumbnail.extension}`}
+                    alt={comic.title}/>
+                )}
+                {!thumbnail && (
+                  <img
+                    src={imageNotFound}
+                    alt={comic.title}/>
+                )}
               </figure>
               <div className="extract">
                 <h4 className="title">
