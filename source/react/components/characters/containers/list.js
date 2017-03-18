@@ -15,29 +15,36 @@ function CharactersList (props) {
       </div>
       <div className="Characters-container wrapper">
         {
-          props.characters
-            .map(character => <CharacterItem key={character.id} {...character} />)
+          props.characters.length > 0
+          ? (
+            props.characters
+              .map(character => <CharacterItem key={character.id} {...character} />)
+            )
+          : <h1 className="title">No results</h1>
+
         }
       </div>
-      <nav className="Characters-paginator">
-        <ul className="list">
-          <li className="item">
-            <a href="#">prev</a>
-          </li>
-          <li className="item active">
-            <a href="#">1</a>
-          </li>
-          <li className="item">
-            <a href="#">2</a>
-          </li>
-          <li className="item">
-            <a href="#">3</a>
-          </li>
-          <li className="item">
-            <a href="">next</a>
-          </li>
-        </ul>
-      </nav>
+       {props.characters.length > 0 && (
+         <nav className="Characters-paginator">
+           <ul className="list">
+             <li className="item">
+               <a href="#">prev</a>
+             </li>
+             <li className="item active">
+               <a href="#">1</a>
+             </li>
+             <li className="item">
+               <a href="#">2</a>
+             </li>
+             <li className="item">
+               <a href="#">3</a>
+             </li>
+             <li className="item">
+               <a href="">next</a>
+             </li>
+           </ul>
+         </nav>
+       )}
     </section>
   )
 }

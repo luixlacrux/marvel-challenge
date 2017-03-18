@@ -71,11 +71,8 @@ class Characters extends Component {
 
     return (
       <div className="Main-content">
-        { characters.length > 0 && (
+        { characters && (
           <CharactersList characters={characters}/>
-        )}
-        { characters.length == 0 && (
-          <h1>No results</h1>
         )}
         {this.state.error && (
           <h1 className="title">Error</h1>
