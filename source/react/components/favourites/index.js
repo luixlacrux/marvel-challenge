@@ -8,8 +8,13 @@ function Favourites (props) {
     <div className="Favourites">
       <h2 className="title">My favourites</h2>
       <ul className="Favourites-list">
-        {props.data.length && props.data
-          .map(comic => <ComicItem key={comic.id} {...comic}/>)
+        {props.data.length > 0 && props.data
+          .map(comic => {
+            return <ComicItem
+                      {...comic}
+                      key={comic.id}
+                      deleteToFavourites={props.deleteToFavourites}/>
+          })
         }
       </ul>
     </div>

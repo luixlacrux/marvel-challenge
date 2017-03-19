@@ -21,6 +21,7 @@ class App extends Component {
     this.previousLocation = this.props.location
     this.renderComic = this.renderComic.bind(this)
     this.addToFavourites = this.addToFavourites.bind(this)
+    this.deleteToFavourites = this.deleteToFavourites.bind(this)
   }
 
   componentWillUpdate (nextProps) {
@@ -51,10 +52,22 @@ class App extends Component {
     storage.save(this.state.favourites)
   }
 
+  deleteToFavourites (id) {
+    let { favourites } = this.state
+    const index = favourites.findIndex(elem => elem.id == id)
+    favourites.splice(index, 1)
+    this.setState({ favourites })
+    storage.save(this.state.favourites)
+  }
+
   renderComic (props) {
     const { favourites } = this.state
     return (
-      <Comic {...props} favourites={favourites} addToFavourites={this.addToFavourites}/>
+      <Comic
+        {...props}
+        favourites={favourites}
+        addToFavourites={this.addToFavourites}
+      />
     )
   }
 
@@ -75,7 +88,10 @@ class App extends Component {
             <Route exact path="/" component={Characters} />
           </Switch>
 
-          <Favourites data={this.state.favourites} />
+          <Favourites
+            data={this.state.favourites}
+            deleteToFavourites={this.deleteToFavourites}
+          />
         </div>
 
         {/* Render Modal */}
