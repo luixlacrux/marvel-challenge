@@ -1,7 +1,7 @@
 const storage = {
   load () {
     const data = JSON.parse(localStorage.getItem('favourites'))
-    return data ? data : false
+    return data ? data : []
   },
 
   save (data) {

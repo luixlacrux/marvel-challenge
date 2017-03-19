@@ -20,8 +20,8 @@ class App extends Component {
     }
     this.previousLocation = this.props.location
     this.renderComic = this.renderComic.bind(this)
+    this.addToFavourites = this.addToFavourites.bind(this)
   }
-
 
   componentWillUpdate (nextProps) {
     const { location } = this.props
@@ -44,10 +44,17 @@ class App extends Component {
     this.loadStorage()
   }
 
+  addToFavourites (item) {
+    let { favourites } = this.state
+    favourites.push(item)
+    this.setState({ favourites })
+    storage.save(this.state.favourites)
+  }
+
   renderComic (props) {
     const { favourites } = this.state
     return (
-      <Comic {...props} favourites={favourites}/>
+      <Comic {...props} favourites={favourites} addToFavourites={this.addToFavourites}/>
     )
   }
 

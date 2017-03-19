@@ -4,8 +4,8 @@
   "description": "Marvel challenge",
   "main": "index.js",
   "scripts": {
-    "stylus": "stylus -u nib -c source/styles/app.styl -o public/css",
-    "stylus:watch": "stylus -u nib -c -w source/styles/app.styl -o public/css",
+    "stylus": "stylus -u nib -c --include-css source/styles/app.styl -o public/css",
+    "stylus:watch": "stylus -u nib -c -w --include-css source/styles/app.styl -o public/css",
     "build": "browserify -t babelify -g uglifyify source/react/index.js > public/js/bundle.js",
     "build:watch": "watchify -t babelify source/react/index.js -o public/js/bundle.js -v --debug",
     "cp-files": "cp source/*.html public && cp -r source/assets/ public",
@@ -38,6 +38,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-router-dom": "^4.0.0",
-    "react-text-truncate": "^0.8.3"
+    "react-text-truncate": "^0.8.3",
+    "sweetalert": "^1.1.3"
   }
 }

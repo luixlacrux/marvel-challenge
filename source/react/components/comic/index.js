@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import swal from 'sweetalert'
 
 import Loading from '../../shares/loading'
 
@@ -9,15 +10,22 @@ class Comic extends Component {
     super(props)
     this.state = {
       comic: {},
+      isSaved: false,
       loading: true
     }
     this.handleClose = this.handleClose.bind(this)
+    this.handleClick = this.handleClick.bind(this)
     this.stopEvent = this.stopEvent.bind(this)
+  }
+
+  notScroll () {
+    document.body.classList.toggle('not-scroll')
   }
 
   handleClose (e) {
     e.preventDefault()
-    return this.props.history.goBack()
+    this.notScroll()
+    this.props.history.goBack()
   }
 
   stopEvent (e) {
@@ -27,6 +35,24 @@ class Comic extends Component {
   componentDidMount () {
     const { match } = this.props
     this.initialFetch(match.params.id)
+    this.notScroll()
+  }
+
+  inFavourites (id) {
+    const comicId = id ? id : this.state.comic.id
+    return this.props.favourites
+      .find(item => item.id == comicId) ? true : false
+  }
+
+  handleClick (e) {
+    e.preventDefault()
+    if (this.inFavourites()) {
+      swal("Oops!", "This comic already exists!", "warning")
+    } else {
+      this.props.addToFavourites(this.state.comic)
+      swal("Save!", "You clicked the button!", "success")
+      this.setState({ isSaved: true })
+    }
   }
 
   async initialFetch (id) {
@@ -34,6 +60,7 @@ class Comic extends Component {
       const comic = await api.comics.getSingle(id)
       this.setState({
         comic,
+        isSaved: this.inFavourites(id),
         loading: false
       })
     } catch (e) {
@@ -55,10 +82,9 @@ class Comic extends Component {
       )
     }
 
-    const { comic } = this.state
-    const thumbnail = comic.images.length > 0 ? comic.images[0] : null
+    const { comic, isSaved } = this.state
     const price = comic.prices.length > 0 ? comic.prices[0] : null
-    const imageNotFound = 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
+    const btnClass = isSaved ? 'add added' : 'add'
 
     return (
       <div id="opacity" className="opacity active">
@@ -69,14 +95,9 @@ class Comic extends Component {
             </button>
             <div className="Modal-info">
               <figure className="thumbail">
-                {thumbnail && (
+                {comic.thumbnail && (
                   <img
-                    src={`${thumbnail.path}.${thumbnail.extension}`}
-                    alt={comic.title}/>
-                )}
-                {!thumbnail && (
-                  <img
-                    src={imageNotFound}
+                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                     alt={comic.title}/>
                 )}
               </figure>
@@ -90,10 +111,10 @@ class Comic extends Component {
               </div>
             </div>
             <div className="Modal-actions">
-              <a href="#" className="add">
+              <a href="#" className={btnClass} onClick={this.handleClick}>
                 <span>ADD TO FAVOURITES</span>
               </a>
-              <a href="#" className="buy">
+              <a href={comic.urls[0].url} className="buy" target="_blank">
                 <span>
                   BUY FOR ${price.price}
                 </span>
