@@ -13,6 +13,26 @@ const api = {
       }
       const data = await response.json()
       return data
+    },
+
+    async getSingle (id) {
+      const response = await fetch(`${baseURL}/characters/${id}?apikey=${apikey}`)
+      if (response.status >= 400) {
+        throw new Error("Opps client error", { status: response.status})
+      }
+
+      const { data } = await response.json()
+      return data.results[0]
+    },
+
+    async getComics (id) {
+      const response = await fetch(`${baseURL}/characters/${id}/comics?apikey=${apikey}`)
+      if (response.status >= 400) {
+        throw new Error("Opps client error", { status: response.status})
+      }
+
+      const { data } = await response.json()
+      return data
     }
   },
 

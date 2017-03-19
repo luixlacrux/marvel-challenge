@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 // Main Components
 import Characters from '../components/characters'
+import CharacterDetail from '../components/characters/detail'
 import Favourites from '../components/favourites'
 import Comic from '../components/comic'
 
@@ -86,6 +87,7 @@ class App extends Component {
         <div className="Main-content">
           <Switch location={isModal ? this.previousLocation : location}>
             <Route exact path="/" component={Characters} />
+            <Route exact path="/characters/:id" component={CharacterDetail} />
           </Switch>
 
           <Favourites
