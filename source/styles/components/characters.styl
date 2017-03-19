@@ -19,6 +19,60 @@
       height 40px
       width 40px
 
+  &-detail
+    width 100%
+    display flex
+    flex-direction column
+    .info
+      padding 1em
+      background $blanco
+      .thumbnail
+        width 50%
+        min-width 150px
+        max-width 300px
+        border-radius 50%
+        border 4px solid $negro
+        margin 0 auto
+        img
+          width 100%
+      p
+        margin 1em
+
+  &-comics
+    .subtitle
+      text-align center
+    ul
+      background $blanco
+      display flex
+      flex-wrap wrap
+      justify-content space-around
+      margin 0
+      padding 1em
+      list-style none
+      li
+        width 30%
+        min-width 200px
+        max-width 250px
+        margin .5em
+        .title
+          font-size 1em
+          margin .5em 0
+          a
+            color $negro
+        .thumbnail
+          border 5px solid $negro
+          height 40vw
+          min-height 300px
+          max-height 350px
+          width 100%
+          transition box-shadow .2s linear
+          &:hover
+            box-shadow 0px 2px 20px rgba($negro, .8)
+          img
+            height 100%
+            width 100%
+
+
   &-paginator
     margin 1em
     .list

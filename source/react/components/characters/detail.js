@@ -47,16 +47,20 @@ class CharacterDetail extends Component {
           <h2 className="title icon">{character.name}</h2>
         </div>
         <div className="Characters-container wrapper">
-          <div className="Characters-detail">
-            <Thumbnail thumbnail={character.thumbnail} name={character.name}/>
-            <p className="description">{character.description}</p>
-            <h2 className="title">Comics</h2>
-            <ul className="Characters-comics">
-              {comics.results && (
-                comics.results.map(comic => <ComicItem key={comic.id} {...comic} />)
-              )}
-            </ul>
-          </div>
+          <section className="Characters-detail">
+            <div className='info'>
+              <Thumbnail thumbnail={character.thumbnail} name={character.name}/>
+              <p className="description">{character.description}</p>
+            </div>
+            <div className="Characters-comics">
+              <h2 className="subtitle">Comics</h2>
+              <ul>
+                {comics.results && (
+                  comics.results.map(comic => <ComicItem key={comic.id} {...comic} />)
+                )}
+              </ul>
+            </div>
+          </section>
         </div>
       </section>
     )

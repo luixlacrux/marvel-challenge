@@ -21,7 +21,10 @@ function ComicItem (props) {
           <img src="/assets/icons/btn-delete.png" alt="trash icon" />
         </button>
       )}
-      <Thumbnail thumbnail={props.thumbnail} title={props.title} />
+      <Link to={navigate}>
+        <Thumbnail thumbnail={props.thumbnail} title={props.title} />
+      </Link>
+
       <h4 className="title">
         <Link to={navigate}>{props.title}</Link>
       </h4>
