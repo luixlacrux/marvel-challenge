@@ -53,14 +53,16 @@ class CharacterDetail extends Component {
               <Thumbnail thumbnail={character.thumbnail} name={character.name}/>
               <p className="description">{character.description}</p>
             </div>
-            <div className="Characters-comics">
-              <h2 className="subtitle">Comics</h2>
-              <ul>
-                {comics.results && (
-                  comics.results.map(comic => <ComicItem key={comic.id} {...comic} />)
-                )}
-              </ul>
-            </div>
+            {comics.results.length > 0 && (
+              <div className="Characters-comics">
+                <h2 className="subtitle">Comics</h2>
+                <ul>
+                  {
+                    comics.results.map(comic => <ComicItem key={comic.id} {...comic} />)
+                  }
+                </ul>
+              </div>
+            )}
           </section>
         </div>
       </section>
