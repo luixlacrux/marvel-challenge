@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import TextTruncate from 'react-text-truncate'
 
+import Thumbnail from '../../../shares/thumbnail'
+import CharacterInfo from './info'
 
 function CharacterItem (props) {
   const comics = props.comics.items.slice(0, 4)
@@ -9,38 +10,22 @@ function CharacterItem (props) {
   return (
     <article className="Card">
       <div className="Card-header">
-        <figure className="thumbail">
-          <img src={`${props.thumbnail.path}.${props.thumbnail.extension}`} alt={props.name} />
-        </figure>
-        <div className="info">
-          <h4 className="title">
-            <Link to={`/characters/${props.id}`}>{props.name}</Link>
-          </h4>
-          <p className="description">
-            <TextTruncate
-              line={5}
-              truncanteText="..."
-              text={props.description}
-            />
-          </p>
-          <Link to={`/characters/${props.id}`} className="btn btn-dark">View more</Link>
-        </div>
+        <Thumbnail thumbnail={props.thumbnail} title={props.name} />
+        <CharacterInfo {...props}/>
       </div>
       <h4 className="subtitle">Related comics</h4>
       <ul className="Card-content">
         {
           comics.map(comic => {
             const id = comic.resourceURI.split('/').pop()
+            const navigate = {
+              pathname: `/comic/${id}`,
+              state: { modal: true }
+            }
+
             return (
               <li key={id}>
-                <Link
-                  to={{
-                    pathname: `/comic/${id}`,
-                    state: { modal: true }
-                  }}
-                >
-                  {comic.name}
-                </Link>
+                <Link to={navigate}>{comic.name}</Link>
               </li>
             )
           })

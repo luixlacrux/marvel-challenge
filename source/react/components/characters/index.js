@@ -77,11 +77,12 @@ class Characters extends Component {
           </select>
         </div>
         <div className="Characters-container wrapper">
-          {
-            characters.length > 0
+          {characters.length > 0
             ? (
               characters
-                .map(character => <CharacterItem key={character.id} {...character} />)
+                .map(character => {
+                  return <CharacterItem key={character.id} {...character} />
+                })
               )
             : <h1 className="title">No results</h1>
           }

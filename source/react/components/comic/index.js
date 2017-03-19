@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import swal from 'sweetalert'
 
 import Loading from '../../shares/loading'
+import ComicDetail from './containers/detail'
+import ComicActions from './containers/actions'
 
 import api from '../../utils/api'
 
@@ -83,8 +85,6 @@ class Comic extends Component {
     }
 
     const { comic, isSaved } = this.state
-    const price = comic.prices.length > 0 ? comic.prices[0] : null
-    const btnClass = isSaved ? 'add added' : 'add'
 
     return (
       <div id="opacity" className="opacity active">
@@ -93,33 +93,8 @@ class Comic extends Component {
             <button className="Modal-button btn btn-close" onClick={this.handleClose}>
               <img src="/assets/icons/btn-close.png" alt="close icon" width="20"/>
             </button>
-            <div className="Modal-info">
-              <figure className="thumbail">
-                {comic.thumbnail && (
-                  <img
-                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                    alt={comic.title}/>
-                )}
-              </figure>
-              <div className="extract">
-                <h4 className="title">
-                  {comic.title}
-                </h4>
-                <p className="description">
-                  {comic.description}
-                </p>
-              </div>
-            </div>
-            <div className="Modal-actions">
-              <a href="#" className={btnClass} onClick={this.handleClick}>
-                <span>ADD TO FAVOURITES</span>
-              </a>
-              <a href={comic.urls[0].url} className="buy" target="_blank">
-                <span>
-                  BUY FOR ${price.price}
-                </span>
-              </a>
-            </div>
+            <ComicDetail {...comic} />
+            <ComicActions {...comic} isSaved={isSaved} handleClick={this.handleClick} />
           </div>
         </div>
       </div>
