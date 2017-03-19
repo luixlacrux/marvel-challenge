@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Thumbnail from '../../../shares/thumbnail'
+import Thumbnail from '../../../shared/thumbnail'
 
 function ComicDetail (props) {
   return (

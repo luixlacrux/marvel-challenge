@@ -8,8 +8,8 @@ import Favourites from '../components/favourites'
 import Comic from '../components/comic'
 
 // UI Share Components
-import Header from '../shares/header'
-import Footer from '../shares/footer'
+import Header from '../shared/header'
+import Footer from '../shared/footer'
 
 import storage from '../utils/storage'
 

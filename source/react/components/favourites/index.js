@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ComicItem from '../../shares/comic'
+import ComicItem from '../../shared/comic'
 
 
 function Favourites (props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import swal from 'sweetalert'
 
-import Loading from '../../shares/loading'
+import Loading from '../../shared/loading'
 import ComicDetail from './containers/detail'
 import ComicActions from './containers/actions'
 

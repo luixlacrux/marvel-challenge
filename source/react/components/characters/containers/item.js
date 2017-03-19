@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import Thumbnail from '../../../shares/thumbnail'
+import Thumbnail from '../../../shared/thumbnail'
 import CharacterInfo from './info'
 
 function CharacterItem (props) {

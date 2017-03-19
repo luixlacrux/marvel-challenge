@@ -3,7 +3,7 @@ import qs from 'querystring'
 
 import CharacterItem from './containers/item'
 
-import Loading from '../../shares/loading'
+import Loading from '../../shared/loading'
 
 import api from '../../utils/api'
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import Loading from '../../shares/loading'
-import Thumbnail from '../../shares/thumbnail'
-import ComicItem from '../../shares/comic'
+import Loading from '../../shared/loading'
+import Thumbnail from '../../shared/thumbnail'
+import ComicItem from '../../shared/comic'
 
 import api from '../../utils/api'
 
