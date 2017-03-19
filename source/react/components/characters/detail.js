@@ -19,6 +19,7 @@ class CharacterDetail extends Component {
   componentDidMount () {
     const { match } = this.props
     this.initialFetch(match.params.id)
+    window.scrollTo(0,0)
   }
 
   async initialFetch (id) {

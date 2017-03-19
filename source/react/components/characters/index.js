@@ -40,6 +40,12 @@ class Characters extends Component {
     this.searchOrInitialFetch(nextProps)
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (prevProps.location != this.props.location) {
+      window.scrollTo(0,0)
+    }
+  }
+
   componentDidMount () {
     this.searchOrInitialFetch(this.props)
   }
