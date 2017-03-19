@@ -16,10 +16,15 @@ function ComicItem (props) {
 
   return (
     <li className="item">
-      <button className="close btn" onClick={handleClick}>
-        <img src="/assets/icons/btn-delete.png" alt="trash icon" />
-      </button>
-      <Thumbnail thumbnail={props.thumbnail} title={props.title} />
+      {props.deleteToFavourites && (
+        <button className="close btn" onClick={handleClick}>
+          <img src="/assets/icons/btn-delete.png" alt="trash icon" />
+        </button>
+      )}
+      <Link to={navigate}>
+        <Thumbnail thumbnail={props.thumbnail} title={props.title} />
+      </Link>
+
       <h4 className="title">
         <Link to={navigate}>{props.title}</Link>
       </h4>
