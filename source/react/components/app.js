@@ -21,7 +21,9 @@ class App extends Component {
     }
     this.previousLocation = this.props.location
     this.renderComic = this.renderComic.bind(this)
+    this.renderCharacterDetail = this.renderCharacterDetail.bind(this)
     this.addToFavourites = this.addToFavourites.bind(this)
+    this.inFavourites = this.inFavourites.bind(this)
     this.deleteToFavourites = this.deleteToFavourites.bind(this)
   }
 
@@ -46,9 +48,16 @@ class App extends Component {
     this.loadStorage()
   }
 
+  inFavourites (comicId) {
+    return this.state.favourites
+      .find(item => item.id == comicId) ? true : false
+  }
+
   addToFavourites (item) {
     let { favourites } = this.state
-    favourites.push(item)
+    if (this.inFavourites(item.id)) return null
+
+    favourites.unshift(item)
     this.setState({ favourites })
     storage.save(this.state.favourites)
   }
@@ -66,7 +75,16 @@ class App extends Component {
     return (
       <Comic
         {...props}
-        favourites={favourites}
+        inFavourites={this.inFavourites}
+        addToFavourites={this.addToFavourites}
+      />
+    )
+  }
+
+  renderCharacterDetail (props) {
+    return (
+      <CharacterDetail
+        {...props}
         addToFavourites={this.addToFavourites}
       />
     )
@@ -87,7 +105,7 @@ class App extends Component {
         <div className="Main-content">
           <Switch location={isModal ? this.previousLocation : location}>
             <Route exact path="/" component={Characters} />
-            <Route exact path="/characters/:id" component={CharacterDetail} />
+            <Route exact path="/characters/:id" render={this.renderCharacterDetail} />
           </Switch>
 
           <Favourites

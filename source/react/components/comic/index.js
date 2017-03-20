@@ -40,15 +40,11 @@ class Comic extends Component {
     this.notScroll()
   }
 
-  inFavourites (id) {
-    const comicId = id ? id : this.state.comic.id
-    return this.props.favourites
-      .find(item => item.id == comicId) ? true : false
-  }
-
   handleClick (e) {
     e.preventDefault()
-    if (this.inFavourites()) {
+    const { id } = this.state.comic
+
+    if (this.props.inFavourites(id)) {
       swal("Oops!", "This comic already exists!", "warning")
     } else {
       this.props.addToFavourites(this.state.comic)
@@ -62,7 +58,7 @@ class Comic extends Component {
       const comic = await api.comics.getSingle(id)
       this.setState({
         comic,
-        isSaved: this.inFavourites(id),
+        isSaved: this.props.inFavourites(id),
         loading: false
       })
     } catch (e) {
