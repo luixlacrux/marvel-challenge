@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Pagination from 'react-js-pagination'
 import qs from 'querystring'
 
 import CharacterItem from './containers/item'
@@ -12,32 +13,34 @@ class Characters extends Component {
     super(props)
     this.state = {
       data: {},
+      activePage: 1,
       loading: true
     }
+
+    this.handlePageChange = this.handlePageChange.bind(this)
   }
 
-  search (props) {
-    const search = qs.decode(props.location.search.replace('?', ''))
-
-    if (search) {
-      return this.initialFetch({
-        nameStartsWith: search.s,
-        limit: 10
-      })
-    }
+  getSearchValue (nextProps) {
+    const props = nextProps || this.props
+    const query = qs.decode(props.location.search.replace('?', ''))
+    return query.s ? query.s : null
   }
 
-  searchOrInitialFetch (props) {
-    if (props.location.search !== '') {
-      return this.search(props)
-    }
+  search (nextProps) {
+    const search = this.getSearchValue(nextProps)
 
-    const querys = { limit: 10 }
-    this.initialFetch(querys)
+    this.initialFetch({
+      nameStartsWith: search,
+      limit: 10
+    })
   }
 
   componentWillReceiveProps (nextProps) {
-    this.searchOrInitialFetch(nextProps)
+    if (nextProps.location.search !== '') {
+      return this.search(nextProps)
+    }
+
+    this.initialFetch({ limit: 10 })
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -47,7 +50,7 @@ class Characters extends Component {
   }
 
   componentDidMount () {
-    this.searchOrInitialFetch(this.props)
+    this.initialFetch({ limit: 10 })
   }
 
   async initialFetch (querys) {
@@ -62,6 +65,20 @@ class Characters extends Component {
         loading: false,
         error: true
       })
+    }
+  }
+
+  handlePageChange (nextPage) {
+    const { data } = this.state
+    const offset = data.limit * nextPage - 10
+
+    this.setState({ activePage: nextPage })
+    const nameStartsWith = this.getSearchValue()
+
+    if (nameStartsWith) {
+      this.initialFetch({ limit: 10, offset, nameStartsWith })
+    } else {
+      this.initialFetch({ limit: 10, offset })
     }
   }
 
@@ -93,27 +110,15 @@ class Characters extends Component {
             : <h1 className="title">No results</h1>
           }
         </div>
-         {characters.length > 0 && (
-           <nav className="Characters-paginator">
-             <ul className="list">
-               <li className="item">
-                 <a href="#">prev</a>
-               </li>
-               <li className="item active">
-                 <a href="#">1</a>
-               </li>
-               <li className="item">
-                 <a href="#">2</a>
-               </li>
-               <li className="item">
-                 <a href="#">3</a>
-               </li>
-               <li className="item">
-                 <a href="">next</a>
-               </li>
-             </ul>
-           </nav>
-         )}
+        <div className="Characters-pagination">
+          <Pagination
+            activePage={this.state.activePage}
+            itemsCountPerPage={this.state.data.limit}
+            totalItemsCount={this.state.data.total}
+            pageRangeDisplayed={5}
+            onChange={this.handlePageChange}
+          />
+        </div>
       </section>
     )
   }

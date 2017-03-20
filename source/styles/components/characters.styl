@@ -74,15 +74,20 @@
             width 100%
 
 
-  &-paginator
+  &-pagination
     margin 1em
-    .list
+    ul
       display flex
       padding 0
       justify-content center
       li
         display inline-block
         margin .5em
+        &.disabled
+          a
+            box-shadow none
+            color $gris_claro
+            cursor not-allowed
         &.active
           a
             box-shadow none
