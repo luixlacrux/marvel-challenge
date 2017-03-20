@@ -7,6 +7,7 @@ import CharacterItem from './containers/item'
 import Loading from '../../shared/loading'
 
 import api from '../../utils/api'
+import animateScrollTo from '../../utils/scrolltop'
 
 class Characters extends Component {
   constructor(props) {
@@ -74,6 +75,7 @@ class Characters extends Component {
     const { data } = this.state
     const offset = data.limit * nextPage - 10
 
+    animateScrollTo(document.body, 0, 200)
     this.setState({ activePage: nextPage })
     const nameStartsWith = this.getSearchValue()
 
