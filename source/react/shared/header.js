@@ -21,6 +21,22 @@ class Header extends Component {
     })
   }
 
+  toggleFavourites (e) {
+    const favourites = document.getElementById('favourites')
+    const opacity = document.getElementById('opacity')
+    const body = document.body
+
+    favourites.classList.add('active')
+    body.classList.add('not-scroll')
+    opacity.classList.add('active')
+
+    opacity.addEventListener('click', (e) => {
+      body.classList.remove('not-scroll')
+      favourites.classList.remove('active')
+      opacity.classList.remove('active')
+    })
+  }
+
   render () {
     return (
       <header className="Header ">
@@ -41,7 +57,7 @@ class Header extends Component {
               <img src="assets/icons/search.png" alt="icon search" />
             </button>
           </form>
-          <button className="btn">
+          <button className="btn" onClick={this.toggleFavourites}>
             <img src="assets/icons/btn-favourites-primary.png" alt="add favourites" />
           </button>
 
