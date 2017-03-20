@@ -29,6 +29,7 @@ class Characters extends Component {
   search (nextProps) {
     const search = this.getSearchValue(nextProps)
 
+    this.setState({ activePage: 1 })
     this.initialFetch({
       nameStartsWith: search,
       limit: 10
@@ -40,6 +41,7 @@ class Characters extends Component {
       return this.search(nextProps)
     }
 
+    this.setState({ activePage: 1 })
     this.initialFetch({ limit: 10 })
   }
 
