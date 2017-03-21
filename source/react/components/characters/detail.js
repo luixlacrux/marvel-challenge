@@ -41,18 +41,21 @@ class CharacterDetail extends Component {
     })
   }
 
-  getRandomElements (sourceArray, elements) {
-    let result = []
+  getRandomNumbers (max, elements) {
+    let numbers = []
     for (let i = 0; i < elements; i++) {
-      const n = Math.floor(Math.random() * sourceArray.length)
-      result.push(sourceArray[n])
+      const num = Math.floor(Math.random() * max)
+      !numbers.some(n => n === num) ? numbers.push(num) : i--
     }
 
-    return result
+    return numbers
   }
 
   handleClick (e) {
-    const elements = this.getRandomElements(this.state.comics.results, 3)
+    const comics = this.state.comics.results
+    const numbers = this.getRandomNumbers(comics.length, 3)
+
+    const elements = numbers.map(num => comics[num])
     elements.forEach(this.props.addToFavourites)
     swal('Randomly save comics!', 'You clicked the button for continue!', 'success')
   }
