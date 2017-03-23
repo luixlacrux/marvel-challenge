@@ -6,6 +6,12 @@ class Header extends Component {
     super(props)
     this.state = {}
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.showFavourites = this.showFavourites.bind(this)
+    this.hideFavourites = this.hideFavourites.bind(this)
+    this.elems = {
+      body: document.body,
+      opacity: document.getElementById('opacity')
+    }
   }
 
   searchValue () {
@@ -21,20 +27,25 @@ class Header extends Component {
     })
   }
 
-  toggleFavourites (e) {
-    const favourites = document.getElementById('favourites')
-    const opacity = document.getElementById('opacity')
-    const body = document.body
+  showFavourites (e) {
+    this.elems.favourites = document.getElementById('favourites')
+    const { favourites, body, opacity } = this.elems
 
     favourites.classList.add('active')
     body.classList.add('not-scroll')
     opacity.classList.add('active')
 
-    opacity.addEventListener('click', (e) => {
-      body.classList.remove('not-scroll')
-      favourites.classList.remove('active')
-      opacity.classList.remove('active')
-    })
+    opacity.addEventListener('click', this.hideFavourites)
+  }
+
+  hideFavourites (e) {
+    const { favourites, body, opacity } = this.elems
+
+    favourites.classList.remove('active')
+    opacity.classList.remove('active')
+    body.classList.remove('not-scroll')
+
+    opacity.removeEventListener('click', this.hideFavourites)
   }
 
   render () {
@@ -57,7 +68,7 @@ class Header extends Component {
               <img src="assets/icons/search.png" alt="icon search" />
             </button>
           </form>
-          <button className="btn" onClick={this.toggleFavourites}>
+          <button className="btn" onClick={this.showFavourites}>
             <img src="assets/icons/btn-favourites-primary.png" alt="add favourites" />
           </button>
 
