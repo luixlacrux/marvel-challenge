@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 
 import Thumbnail from './thumbnail'
@@ -30,6 +30,12 @@ function ComicItem (props) {
       </h4>
     </li>
   )
+}
+
+ComicItem.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  thumbnail: PropTypes.object
 }
 
 export default ComicItem

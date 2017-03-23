@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import Thumbnail from '../../../shared/thumbnail'
 
@@ -16,6 +16,12 @@ function ComicDetail (props) {
       </div>
     </div>
   )
+}
+
+ComicDetail.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  thumbnail: PropTypes.object
 }
 
 export default ComicDetail

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import TextTruncate from 'react-text-truncate'
 import { Link } from 'react-router-dom'
 
@@ -19,6 +19,12 @@ function CharacterInfo (props) {
       <Link to={`/characters/${props.id}`} className="btn btn-dark">View more</Link>
     </div>
   )
+}
+
+CharacterInfo.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 }
 
 export default CharacterInfo

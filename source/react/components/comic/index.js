@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import swal from 'sweetalert'
 
 import Loading from '../../shared/loading'
@@ -96,6 +96,16 @@ class Comic extends Component {
       </div>
     )
   }
+}
+
+Comic.propTypes = {
+  addToFavourites: PropTypes.func.isRequired,
+  inFavourites: PropTypes.func.isRequired,
+  match:  PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired
+    })
+  })
 }
 
 export default Comic

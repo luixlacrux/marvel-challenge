@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import ComicItem from '../../shared/comic'
 
@@ -19,6 +19,11 @@ function Favourites (props) {
       </ul>
     </div>
   )
+}
+
+Favourites.propTypes = {
+  data: PropTypes.array.isRequired,
+  deleteToFavourites: PropTypes.func.isRequired
 }
 
 export default Favourites

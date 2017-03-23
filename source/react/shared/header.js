@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 
 class Header extends Component {
@@ -65,6 +65,10 @@ class Header extends Component {
       </header>
     )
   }
+}
+
+Header.propTypes = {
+  history: PropTypes.object.isRequired
 }
 
 export default Header

@@ -100,7 +100,7 @@ class App extends Component {
 
     return (
       <section className="Main-container">
-        <Header {...this.props}/>
+        <Header history={this.props.history}/>
 
         <div className="Main-content">
           <Switch location={isModal ? this.previousLocation : location}>

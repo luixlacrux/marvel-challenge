@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 function ComicActions (props) {
   const btnClass = props.isSaved ? 'add added' : 'add'
@@ -16,6 +16,13 @@ function ComicActions (props) {
       </a>
     </div>
   )
+}
+
+ComicActions.propTypes = {
+  handleClick: PropTypes.func.isRequired,
+  prices: PropTypes.array.isRequired,
+  urls: PropTypes.array.isRequired,
+  isSaved: PropTypes.bool
 }
 
 export default ComicActions

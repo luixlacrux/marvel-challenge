@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 
 import Thumbnail from '../../../shared/thumbnail'
@@ -33,6 +33,15 @@ function CharacterItem (props) {
       </ul>
     </article>
   )
+}
+
+CharacterItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  comics: PropTypes.shape({
+    items: PropTypes.array.isRequired
+  })
 }
 
 export default CharacterItem

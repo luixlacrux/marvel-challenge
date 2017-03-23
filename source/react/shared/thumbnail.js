@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 function Thumbnail (props) {
   return (
@@ -8,6 +8,15 @@ function Thumbnail (props) {
       )}
     </figure>
   )
+}
+
+Thumbnail.propTypes = {
+  thumbnail: PropTypes.shape({
+    path: PropTypes.string,
+    extension: PropTypes.string
+  }),
+  title: PropTypes.string,
+  name: PropTypes.string
 }
 
 export default Thumbnail
