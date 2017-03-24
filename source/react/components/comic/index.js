@@ -45,10 +45,10 @@ class Comic extends Component {
     const { id } = this.state.comic
 
     if (this.props.inFavourites(id)) {
-      swal("Oops!", "This comic already exists!", "warning")
+      swal('Oops!', 'This comic already exists!', 'warning')
     } else {
       this.props.addToFavourites(this.state.comic)
-      swal("Save!", "You clicked the button!", "success")
+      swal('Save!', 'You clicked the button!', 'success')
       this.setState({ isSaved: true })
     }
   }
@@ -72,8 +72,8 @@ class Comic extends Component {
   render () {
     if (this.state.loading) {
       return (
-        <div id="opacity" className="opacity active">
-          <div className="Modal active">
+        <div id='opacity' className='opacity active'>
+          <div className='Modal active'>
             <Loading />
           </div>
         </div>
@@ -83,11 +83,11 @@ class Comic extends Component {
     const { comic, isSaved } = this.state
 
     return (
-      <div id="opacity" className="opacity active">
-        <div className="Modal active" onClick={this.handleClose}>
-          <div className="Modal-content" onClick={this.stopEvent}>
-            <button className="Modal-button btn btn-close" onClick={this.handleClose}>
-              <img src="/assets/icons/btn-close.png" alt="close icon" width="20"/>
+      <div id='opacity' className='opacity active'>
+        <div className='Modal active' onClick={this.handleClose}>
+          <div className='Modal-content' onClick={this.stopEvent}>
+            <button className='Modal-button btn btn-close' onClick={this.handleClose}>
+              <img src='/assets/icons/btn-close.png' alt='close icon' width='20' />
             </button>
             <ComicDetail {...comic} />
             <ComicActions {...comic} isSaved={isSaved} handleClick={this.handleClick} />
@@ -101,11 +101,16 @@ class Comic extends Component {
 Comic.propTypes = {
   addToFavourites: PropTypes.func.isRequired,
   inFavourites: PropTypes.func.isRequired,
-  match:  PropTypes.shape({
+
+  match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     })
-  })
+  }).isRequired,
+
+  history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired
+  }).isRequired
 }
 
 export default Comic

@@ -1,7 +1,9 @@
+const { localStorage } = window || global
+
 const storage = {
   load () {
     const data = JSON.parse(localStorage.getItem('favourites'))
-    return data ? data : []
+    return data || []
   },
 
   save (data) {

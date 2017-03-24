@@ -8,13 +8,13 @@ function CharacterItem (props) {
   const comics = props.comics.items.slice(0, 4)
 
   return (
-    <article className="Card">
-      <div className="Card-header">
+    <article className='Card'>
+      <div className='Card-header'>
         <Thumbnail thumbnail={props.thumbnail} title={props.name} />
-        <CharacterInfo {...props}/>
+        <CharacterInfo {...props} />
       </div>
-      <h4 className="subtitle">Related comics</h4>
-      <ul className="Card-content">
+      <h4 className='subtitle'>Related comics</h4>
+      <ul className='Card-content'>
         {
           comics.map(comic => {
             const id = comic.resourceURI.split('/').pop()
@@ -36,9 +36,8 @@ function CharacterItem (props) {
 }
 
 CharacterItem.propTypes = {
-  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  thumbnail: PropTypes.object.isRequired,
   comics: PropTypes.shape({
     items: PropTypes.array.isRequired
   })

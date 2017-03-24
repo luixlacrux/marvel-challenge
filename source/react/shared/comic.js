@@ -15,17 +15,17 @@ function ComicItem (props) {
   }
 
   return (
-    <li className="item">
+    <li className='item'>
       {props.deleteToFavourites && (
-        <button className="close btn" onClick={handleClick}>
-          <img src="/assets/icons/btn-delete.png" alt="trash icon" />
+        <button className='close btn' onClick={handleClick}>
+          <img src='/assets/icons/btn-delete.png' alt='trash icon' />
         </button>
       )}
       <Link to={navigate}>
         <Thumbnail thumbnail={props.thumbnail} title={props.title} />
       </Link>
 
-      <h4 className="title">
+      <h4 className='title'>
         <Link to={navigate}>{props.title}</Link>
       </h4>
     </li>
@@ -35,7 +35,8 @@ function ComicItem (props) {
 ComicItem.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
-  thumbnail: PropTypes.object
+  thumbnail: PropTypes.object,
+  deleteToFavourites: PropTypes.func
 }
 
 export default ComicItem

@@ -50,26 +50,26 @@ class Header extends Component {
 
   render () {
     return (
-      <header className="Header ">
-        <div className="Header-content">
-          <Link className="Header-logo" to='/'>
-            <img src="assets/images/marvel-logo.png" alt="Marvel logo" width="150" />
+      <header className='Header '>
+        <div className='Header-content'>
+          <Link className='Header-logo' to='/'>
+            <img src='assets/images/marvel-logo.png' alt='Marvel logo' width='150' />
           </Link>
-          <form className="Header-search" onSubmit={this.handleSubmit}>
+          <form className='Header-search' onSubmit={this.handleSubmit}>
             <input
-              type="text"
+              type='text'
               ref={(input) => { this.search = input }}
-              placeholder="Search character..."
+              placeholder='Search character...'
               autoFocus
-              autoComplete="off"
+              autoComplete='off'
               required
             />
             <button>
-              <img src="assets/icons/search.png" alt="icon search" />
+              <img src='assets/icons/search.png' alt='icon search' />
             </button>
           </form>
-          <button className="btn" onClick={this.showFavourites}>
-            <img src="assets/icons/btn-favourites-primary.png" alt="add favourites" />
+          <button className='btn' onClick={this.showFavourites}>
+            <img src='assets/icons/btn-favourites-primary.png' alt='add favourites' />
           </button>
 
         </div>

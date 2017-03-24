@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 // Main Components
@@ -49,8 +49,9 @@ class App extends Component {
   }
 
   inFavourites (comicId) {
+    comicId = parseInt(comicId, 10)
     return this.state.favourites
-      .find(item => item.id == comicId) ? true : false
+      .find(item => item.id === comicId) || false
   }
 
   addToFavourites (item) {
@@ -64,14 +65,13 @@ class App extends Component {
 
   deleteToFavourites (id) {
     let { favourites } = this.state
-    const index = favourites.findIndex(elem => elem.id == id)
+    const index = favourites.findIndex(elem => elem.id === id)
     favourites.splice(index, 1)
     this.setState({ favourites })
     storage.save(this.state.favourites)
   }
 
   renderComic (props) {
-    const { favourites } = this.state
     return (
       <Comic
         {...props}
@@ -99,13 +99,13 @@ class App extends Component {
     )
 
     return (
-      <section className="Main-container">
-        <Header history={this.props.history}/>
+      <section className='Main-container'>
+        <Header history={this.props.history} />
 
-        <div className="Main-content">
+        <div className='Main-content'>
           <Switch location={isModal ? this.previousLocation : location}>
-            <Route exact path="/" component={Characters} />
-            <Route exact path="/characters/:id" render={this.renderCharacterDetail} />
+            <Route exact path='/' component={Characters} />
+            <Route exact path='/characters/:id' render={this.renderCharacterDetail} />
           </Switch>
 
           <Favourites
@@ -121,6 +121,11 @@ class App extends Component {
       </section>
     )
   }
+}
+
+App.propTypes = {
+  location: PropTypes.object,
+  history: PropTypes.object
 }
 
 export default App

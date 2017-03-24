@@ -2,21 +2,20 @@ import React, { PropTypes } from 'react'
 import TextTruncate from 'react-text-truncate'
 import { Link } from 'react-router-dom'
 
-
 function CharacterInfo (props) {
   return (
-    <div className="info">
-      <h4 className="title">
+    <div className='info'>
+      <h4 className='title'>
         <Link to={`/characters/${props.id}`}>{props.name}</Link>
       </h4>
-      <p className="description">
+      <p className='description'>
         <TextTruncate
           line={5}
-          truncanteText="..."
+          truncanteText='...'
           text={props.description}
         />
       </p>
-      <Link to={`/characters/${props.id}`} className="btn btn-dark">View more</Link>
+      <Link to={`/characters/${props.id}`} className='btn btn-dark'>View more</Link>
     </div>
   )
 }
@@ -24,7 +23,7 @@ function CharacterInfo (props) {
 CharacterInfo.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired
 }
 
 export default CharacterInfo
