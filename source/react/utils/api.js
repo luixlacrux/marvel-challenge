@@ -9,7 +9,7 @@ const api = {
     async getList (querys) {
       const response = await fetch(`${baseURL}/characters?${qs.encode(querys)}&apikey=${apikey}`)
       if (response.status >= 400) {
-        throw new Error("Opps client error", { status: response.status})
+        throw new Error('Opps client error', { status: response.status })
       }
       const data = await response.json()
       return data
@@ -18,7 +18,7 @@ const api = {
     async getSingle (id) {
       const response = await fetch(`${baseURL}/characters/${id}?apikey=${apikey}`)
       if (response.status >= 400) {
-        throw new Error("Opps client error", { status: response.status})
+        throw new Error('Opps client error', { status: response.status })
       }
 
       const { data } = await response.json()
@@ -28,7 +28,7 @@ const api = {
     async getComics (id) {
       const response = await fetch(`${baseURL}/characters/${id}/comics?apikey=${apikey}`)
       if (response.status >= 400) {
-        throw new Error("Opps client error", { status: response.status})
+        throw new Error('Opps client error', { status: response.status })
       }
 
       const { data } = await response.json()
@@ -40,7 +40,7 @@ const api = {
     async getSingle (id) {
       const response = await fetch(`${baseURL}/comics/${id}?apikey=${apikey}`)
       if (response.status >= 400) {
-        throw new Error("Opps client error", { status: response.status})
+        throw new Error('Opps client error', { status: response.status })
       }
       const { data } = await response.json()
       return data.results[0]

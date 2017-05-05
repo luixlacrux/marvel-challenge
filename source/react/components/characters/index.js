@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Pagination from 'react-js-pagination'
 import qs from 'querystring'
 
@@ -10,7 +10,7 @@ import api from '../../utils/api'
 import animateScrollTo from '../../utils/scrolltop'
 
 class Characters extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       data: {},
@@ -47,8 +47,8 @@ class Characters extends Component {
   }
 
   componentDidUpdate (prevProps, prevState) {
-    if (prevProps.location != this.props.location) {
-      window.scrollTo(0,0)
+    if (prevProps.location !== this.props.location) {
+      window.scrollTo(0, 0)
     }
   }
 
@@ -94,16 +94,16 @@ class Characters extends Component {
     }
 
     return (
-      <section className="Characters">
-        <div className="Characters-info wrapper">
-          <h2 className="title icon">Characters</h2>
-          <select name="sort">
+      <section className='Characters'>
+        <div className='Characters-info wrapper'>
+          <h2 className='title icon'>Characters</h2>
+          <select name='sort'>
             <option>Sort by</option>
-            <option value="name">Name</option>
-            <option value="other">Some thing</option>
+            <option value='name'>Name</option>
+            <option value='other'>Some thing</option>
           </select>
         </div>
-        <div className="Characters-container wrapper">
+        <div className='Characters-container wrapper'>
           {characters.length > 0
             ? (
               characters
@@ -111,10 +111,10 @@ class Characters extends Component {
                   return <CharacterItem key={character.id} {...character} />
                 })
               )
-            : <h1 className="title">No results</h1>
+            : <h1 className='title'>No results</h1>
           }
         </div>
-        <div className="Characters-pagination">
+        <div className='Characters-pagination'>
           <Pagination
             activePage={this.state.activePage}
             itemsCountPerPage={this.state.data.limit}
@@ -126,6 +126,12 @@ class Characters extends Component {
       </section>
     )
   }
+}
+
+Characters.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.string
+  }).isRequired
 }
 
 export default Characters

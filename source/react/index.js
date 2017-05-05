@@ -10,7 +10,7 @@ import App from './components/app'
 
 render(
   <Router>
-    <Route component={App}/>
+    <Route component={App} />
   </Router>,
   document.getElementById('app')
 )

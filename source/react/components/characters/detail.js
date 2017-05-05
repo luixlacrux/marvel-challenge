@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 
 import swal from 'sweetalert'
 
@@ -22,7 +22,7 @@ class CharacterDetail extends Component {
   componentDidMount () {
     const { match } = this.props
     this.initialFetch(match.params.id)
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }
 
   async initialFetch (id) {
@@ -41,18 +41,21 @@ class CharacterDetail extends Component {
     })
   }
 
-  getRandomElements (sourceArray, elements) {
-    let result = []
+  getRandomNumbers (max, elements) {
+    let numbers = []
     for (let i = 0; i < elements; i++) {
-      const n = Math.floor(Math.random() * sourceArray.length)
-      result.push(sourceArray[n])
+      const num = Math.floor(Math.random() * max)
+      !numbers.some(n => n === num) ? numbers.push(num) : i--
     }
 
-    return result
+    return numbers
   }
 
   handleClick (e) {
-    const elements = this.getRandomElements(this.state.comics.results, 3)
+    const comics = this.state.comics.results
+    const numbers = this.getRandomNumbers(comics.length, 3)
+
+    const elements = numbers.map(num => comics[num])
     elements.forEach(this.props.addToFavourites)
     swal('Randomly save comics!', 'You clicked the button for continue!', 'success')
   }
@@ -62,21 +65,21 @@ class CharacterDetail extends Component {
 
     const { character, comics } = this.state
     return (
-      <section className="Characters">
-        <div className="Characters-info wrapper">
-          <h2 className="title icon">{character.name}</h2>
+      <section className='Characters'>
+        <div className='Characters-info wrapper'>
+          <h2 className='title icon'>{character.name}</h2>
         </div>
-        <div className="Characters-container wrapper">
-          <section className="Characters-detail">
+        <div className='Characters-container wrapper'>
+          <section className='Characters-detail'>
             <div className='info'>
-              <Thumbnail thumbnail={character.thumbnail} name={character.name}/>
-              <p className="description">{character.description}</p>
+              <Thumbnail thumbnail={character.thumbnail} name={character.name} />
+              <p className='description'>{character.description}</p>
             </div>
             {comics.results.length > 0 && (
-              <div className="Characters-comics">
-                <h2 className="subtitle">Comics</h2>
-                <button className="btn" onClick={this.handleClick}>
-                  <img src="/assets/icons/btn-favourites-default.png" title="favourites icon"/>
+              <div className='Characters-comics'>
+                <h2 className='subtitle'>Comics</h2>
+                <button className='btn' onClick={this.handleClick}>
+                  <img src='/assets/icons/btn-favourites-default.png' title='favourites icon' />
                   Random Favourites
                 </button>
                 <ul>
@@ -91,6 +94,15 @@ class CharacterDetail extends Component {
       </section>
     )
   }
+}
+
+CharacterDetail.propTypes = {
+  addToFavourites: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  }).isRequired
 }
 
 export default CharacterDetail
