@@ -97,11 +97,11 @@ class Characters extends Component {
       <section className='Characters'>
         <div className='Characters-info wrapper'>
           <h2 className='title icon'>Characters</h2>
-          <select name='sort'>
+          {/* <select name='sort'>
             <option>Sort by</option>
             <option value='name'>Name</option>
             <option value='other'>Some thing</option>
-          </select>
+          </select> */}
         </div>
         <div className='Characters-container wrapper'>
           {characters.length > 0
